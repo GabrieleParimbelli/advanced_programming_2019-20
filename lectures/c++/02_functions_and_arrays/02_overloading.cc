@@ -1,21 +1,28 @@
 #include <iostream>
 
+// 'overloading' is creating function with same name but different types and number of arguments
+// it is possible in C++, not in C
+
 // forward declaration
 int dwim(const int a, const int b);
 double dwim(const double a, const double b);
 float dwim(const float a, const float b);
 
+// main
 int main() {
   int a{5}, b{7};
   double c{3.332}, d{7.7};
   float e{23.4}, f{3.34e2};
 
-  std::cout << dwim(a, b) << '\n'
-            << dwim(c, d) << '\n'
+  // dwim are 3 different function; returned value depends on arguments
+  // dwim(e,a) fails because e is float while a is integer.
+  std::cout << dwim(a, b) << "\n"
+            << dwim(c, d) << "\n"
             << dwim(e, f) << std::endl;
   return 0;
 }
 
+// definition
 int dwim(const int a, const int b) {
   std::cout << "int ------ ";
   return a + b;

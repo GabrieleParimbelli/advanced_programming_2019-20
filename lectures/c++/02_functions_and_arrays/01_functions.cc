@@ -19,7 +19,10 @@ unsigned int factorial(unsigned int n) {
 
 int main() {
   unsigned int f5{factorial(5)};
-  auto f6 = factorial(6);  // use = with auto
+  // 'auto' means compiler has to interpret what the type is (introduced in C++14)
+  // In this case it will be an 'unsigned int' since 'factorial' returns that.
+  // I can also define a function to be 'auto': return type is deduced by compiler
+  auto f6 = factorial(6);  // use = with auto.
   std::cout << "factorial of 5 is " << f5 << '\n'
             << "factorial of 6 is " << f6 << std::endl;
 

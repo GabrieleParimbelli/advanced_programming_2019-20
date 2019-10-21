@@ -2,8 +2,8 @@
 #include <utility>  //std::swap
 
 void buggy_swap(int a, int b);
-void c_swap(int* a, int* b);
-void cxx_swap(int& a, int& b);
+void c_swap(int* a, int* b);		// C style
+void cxx_swap(int& a, int& b);		// C++ style
 
 template <typename T>
 void templ_swap(T& a, T& b);
@@ -41,12 +41,14 @@ void buggy_swap(int a, int b) {
   a = tmp;
 }
 
+// Change of addresses
 void c_swap(int* a, int* b) {
-  int tmp{*b};
-  *b = *a;
-  *a = tmp;
+  int tmp{*b}; // tmp = 7
+  *b = *a;     // *b accesses to the address of a and changes the value
+  *a = tmp;    // same for *a with tmp
 }
 
+// pass by references
 void cxx_swap(int& a, int& b) {
   int tmp{b};
   b = a;

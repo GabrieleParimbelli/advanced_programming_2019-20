@@ -1,7 +1,7 @@
 #include <iostream>
 
 void surprise(double a[], const std::size_t n) {
-  for (auto i = 0llu; i < n; ++i) {
+  for (auto i = 0llu; i < n; ++i) {  // '0llu' = 0 long long unsigned
     a[i] = 77;
   }
 }
@@ -13,8 +13,10 @@ int main() {
   af[8] = 3.3;  // last element
   ai[88] = 7;   // undefined behavior, no range checking
 
+  // size_t to avoid overflow problems (non-negative number)
   for (std::size_t k{0}; k < 4; ++k)
     std::cout << "ai[" << k << "] = " << ai[k] << '\n';
+  // elements not defined take values from what is contained in moemory cells from previous codes
 
   std::cout << "\n-------------------------------\n\n";
 
@@ -37,8 +39,9 @@ int main() {
 
   // double ad2[2] {1,2,3,4}; // error
 
-  surprise(ad, 7);
-  std::cout << "after surprise()" << std::endl;
+  // name of arrays are pointers! So after 'surprise' values change even in main without necessity of using * &
+  surprise(ad, 5);
+  std::cout << "\nafter surprise()" << std::endl;
   for (std::size_t k{0}; k < 7; ++k)
     std::cout << ad[k] << std::endl;
 

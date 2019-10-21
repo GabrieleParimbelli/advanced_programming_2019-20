@@ -3,7 +3,7 @@
 int main() {
   std::cout << "Please insert array lenght: ";
   std::size_t n;
-  std::cin >> n;
+  std::cin >> n;		// size not known at compile time, only at run time
   int* da{new int[n]};  // allocated on the HEAP, or free-store
 
   for (std::size_t i{0}; i < n; ++i)
